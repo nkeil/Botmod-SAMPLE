@@ -9,15 +9,13 @@ using Discord.WebSocket;
 using System.Diagnostics;
 using System.Threading;
 
-// ADMINISTRATION COMMANDS
-
 namespace Discord_BodmodBot.Modules
 {
     public class Admin: ModuleBase<SocketCommandContext>
     {
         Random _ran = new Random();
 
-        //Kick a user
+        //If you can kick kids, you can use this command instead
         [Command("kick"), RequireUserPermission(GuildPermission.KickMembers)]
         public async Task KickUser(IGuildUser user, [Remainder] string reason = "none")
         {
@@ -27,7 +25,6 @@ namespace Discord_BodmodBot.Modules
             await Context.Channel.SendMessageAsync($"kicked {user}");
         }
 
-        //Mass remove messages, optional to only delete from a specified user
         [Command("prune"), RequireUserPermissionAttribute(GuildPermission.ManageMessages)]
         public async Task Prune(SocketGuildUser name = null)
         {
