@@ -27,7 +27,7 @@ namespace Discord_BodmodBot.Modules
             await Context.Channel.SendMessageAsync($"kicked {user}");
         }
 
-        //Mass remove messages, optional for a certain user
+        //Mass remove messages, optional to only delete from a specified user
         [Command("prune"), RequireUserPermissionAttribute(GuildPermission.ManageMessages)]
         public async Task Prune(SocketGuildUser name = null)
         {
