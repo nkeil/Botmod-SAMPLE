@@ -47,14 +47,14 @@ namespace Discord_BodmodBot
                 .AddJsonFile("appsettings.json").Build();
         }
 
-        // executes on user join
         private async Task AnnounceUserJoined(SocketGuildUser user)
         {
+            //announce user join in UCSC server
             if (user.Guild.Id == 473217646884552734)
             {
                 var channel = _client.GetChannel(473248037951766563) as SocketTextChannel;
                 await channel.SendMessageAsync($"hey {user.Mention}");
-                await channel.SendMessageAsync($"say *role [CS,CS:GD,CE,other] to get access to the server");
+                await channel.SendMessageAsync($"say [*major CS, CS:GD, CE, other, or none] to get access to the server");
             }
         }
         
@@ -71,14 +71,10 @@ namespace Discord_BodmodBot
             return Task.CompletedTask;
         }
 
-        // test command
+        //Test command to make sure bot is running
         private async Task MessageReceivedAsync(SocketMessage message)
         {
-            // The bot should never respond to itself.
-            if (message.Author.Id == _client.CurrentUser.Id)
-                return;
-
-            if (message.Content == "*ping")
+            if (message.Content == "!ping")
                 await message.Channel.SendMessageAsync("pong!");
         }
     }
